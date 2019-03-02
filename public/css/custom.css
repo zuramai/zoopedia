@@ -1,0 +1,19 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ * 
+ */
+
+/*# sourceMappingURL=custom.css.map */
+.form-delete {
+	display: inline-block;
+}
+
+pre {
+	background-color: #f5f5f5;
+}
+
+.section-api {
+	margin-top: 40px;
+}
