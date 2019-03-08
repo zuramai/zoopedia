@@ -190,7 +190,8 @@ class OrderController extends Controller
     }
 
     public function pulsa(){
-        return view('order.pulsa.new');
+        $cat = Service_cat::where('type','PULSA')->where('status','Active')->get();
+        return view('order.pulsa.new', compact('cat'));
     }
     public function pulsa_order(Request $r){
         return view('order.pulsa.new');

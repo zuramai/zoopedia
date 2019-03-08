@@ -51,6 +51,14 @@ Route::prefix('order')->group(function() {
 			Route::post('/get_service_data_pulsa','OrderController@get_service_data_pulsa');
 		});
 	});
+
+	Route::prefix('whatsapp')->group(function() {
+		Route::get('/','WhatsappController@index');
+		Route::get('/sender','WhatsappController@sender');
+		Route::get('/send','WhatsappController@send');
+		Route::post('/send', 'WhatsappController@send_post');
+		Route::get('/history','WhatsappController@history');
+	});
 });
 
 Route::prefix('developer')->group(function() {
@@ -66,6 +74,16 @@ Route::prefix('developer')->group(function() {
 		Route::get('/edit/{id}', 'AdminController@edit_services')->name('dev_services_edit');
 		Route::post('/edit/{id}', 'AdminController@update_services')->name('dev_services_update');
 	});
+	Route::prefix('/services_pulsa')->group(function(){
+		Route::get('/', 'AdminController@services_pulsa')->name('dev_services_pulsa');
+		Route::delete('/', 'AdminController@delete_services_pulsa');
+		Route::get('/delete', 'AdminController@detail_service_pulsa');
+		Route::get('/detail/{id}', 'AdminController@detail_services_pulsa')->name('dev_services_detail');
+		Route::get('/add', 'AdminController@add_services_pulsa')->name('dev_services_add');
+		Route::post('/add', 'AdminController@post_add_services_pulsa')->name('dev_services_add_post');
+		Route::get('/edit/{id}', 'AdminController@edit_services_pulsa')->name('dev_services_edit');
+		Route::post('/edit/{id}', 'AdminController@update_services')->name('dev_services_update');
+	});
 	Route::prefix('/services_cat')->group(function(){
 		Route::get('/', 'AdminController@service_cat')->name('services_cat');
 		Route::get('/add', 'AdminController@add_service_cat')->name('dev_services_add');
@@ -74,7 +92,6 @@ Route::prefix('developer')->group(function() {
 		Route::get('/edit/{id}', 'AdminController@edit_service_cat')->name('dev_services_edit');
 		Route::post('/edit/{id}', 'AdminController@update_service_cat')->name('dev_services_update');
 	});
-
 
 	Route::prefix('/orders')->group(function(){
 		# MANAGE ORDERS SOSMED #
@@ -98,7 +115,9 @@ Route::prefix('developer')->group(function() {
 		Route::post('/add','AdminController@add_users_post');
 		Route::get('/edit/{id}','AdminController@edit_users');
 		Route::post('/edit/{id}','AdminController@update_users');
+		Route::get('/detail/{id}', 'AdminController@users_detail');
 	});
+
 	Route::prefix('/deposit')->group(function(){
 		Route::get('/','AdminController@manage_deposit');	
 		Route::post('/accept','AdminController@accept_deposit');	

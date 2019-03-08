@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{$_ENV['WEB_TITLE']}}</title>
+  <title>{{env('WEB_TITLE')}}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('modules/bootstrap/css/bootstrap.min.css')}}">
@@ -265,7 +265,7 @@
                 <li><a class="nav-link" href="{{url('developer/orders/pulsa')}}"> Kelola Pesanan Pulsa</a></li>
                 <li><a class="nav-link" href="{{route('services_cat')}}"> Kelola Kategori Layanan</a></li>
                 <li><a class="nav-link" href="{{route('dev_services')}}"> Kelola Layanan Sosmed</a></li>
-                <li><a class="nav-link" href="{{route('sosmed_history')}}"> Kelola Layanan Pulsa</a></li>
+                <li><a class="nav-link" href="{{route('dev_services_pulsa')}}"> Kelola Layanan Pulsa</a></li>
                 <li><a class="nav-link" href="{{url('developer/deposit')}}"> Kelola Deposit</a></li>
                 <li><a class="nav-link" href="{{url('developer/deposit/method')}}"> Kelola Metode Deposit</a></li>
                 <li><a class="nav-link" href="{{url('developer/news')}}"> Kelola Berita</a></li>
@@ -289,6 +289,14 @@
                 <li><a class="nav-link" href="{{route('order_pulsa')}}">Pemesanan baru</a></li>
                 <li><a class="nav-link" href="{{route('order_pulsa_history')}}"> Riwayat Pemesanan</a></li>
                 <li><a class="nav-link" href="{{url('order/statistic')}}">Statistik Order</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fab fa-whatsapp"></i> <span>Whatsapp Gateway</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{{route('order_pulsa')}}">Kirim Pesan</a></li>
+                <li><a class="nav-link" href="{{route('order_pulsa')}}">Sender Status</a></li>
+                <li><a class="nav-link" href="{{route('order_pulsa_history')}}"> Riwayat Pesan</a></li>
               </ul>
             </li>
             <li class="dropdown">

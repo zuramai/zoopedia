@@ -3,11 +3,11 @@
 @section('content')
 <section class="section">
           <div class="section-header">
-            <h1>Ubah Kategori </h1>
+            <h1>Tambah Berita </h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Developer</a></div>
-              <div class="breadcrumb-item"><a href="#">Service Category</a></div>
+              <div class="breadcrumb-item"><a href="#">News</a></div>
               <div class="breadcrumb-item">Add</div>
             </div>
           </div>
@@ -18,7 +18,7 @@
           		<div class="col-md-12">
           			<div class="card">
 		                <div class="card-header">
-		                    <h4><span>Ubah Kategori Layanan</span></h4>
+		                    <h4><span>Tambah Berita</span></h4>
                         </div>
                         <form method="POST" action="">
                             @csrf
@@ -33,29 +33,29 @@
                                 </div>
                             @endif
                               <div class="form-group">
-                                <label>Nama kategori</label>
-                                <input type="text" placeholder="Nama kategori.." class="form-control" name="name" value="{{ $scat->name }}">
+                                <label>Tipe</label>
+                                <select class="form-control" name="type">
+                                  <option>Select one..</option>
+                                  <option value="Update">Update</option>
+                                  <option value="New Services">New Services</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label>Konten</label>
+                                <textarea class="form-control" name="content"></textarea>
                               </div>
                               <div class="form-group">
                                 <label>Tipe</label>
                                 <select class="form-control" name="type">
                                   <option value="">Choose one..</option>
-                                  <option value="SOSMED" {{ ($scat->type == 'SOSMED') ? 'selected' : '' }}>Sosial Media</option>
-                                  <option value="PULSA" {{ ($scat->type == 'PULSA') ? 'selected' : '' }}>Pulsa</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Status</label>
-                                <select class="form-control" name="status">
-                                  <option value="">Choose one..</option>
-                                  <option value="Active" {{ ($scat->status == 'Active') ? 'selected' : '' }}>Active</option>
-                                  <option value="Not Active" {{ ($scat->status == 'Not Active') ? 'selected' : '' }}>Not Active</option>
+                                  <option value="SOSMED">Sosial Media</option>
+                                  <option value="PULSA">Pulsa</option>
                                 </select>
                               </div>
                               
                           </div>
                           <div class="card-footer text-right">
-                            <button type="submit" class="btn btn-primary">Ubah</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
                           </div>    
                         </form>
 		            </div>

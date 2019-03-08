@@ -7,8 +7,10 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Service_cat;
 use App\Service;
+use App\Services_pulsa;
 use App\User;
 use App\Order;
+use App\News;
 use App\Provider;
 
 class AdminController extends Controller
@@ -41,6 +43,7 @@ class AdminController extends Controller
             'keuntungan'=>'required',
             'price_oper'=>'required',
             'pid'=>'required',
+            'type' => 'required|in:Basic,Custom Comment,Comment Likes',
             'provider'=>'required',
         ]);
         $name = $r->name;
@@ -48,6 +51,7 @@ class AdminController extends Controller
         $note = $r->note;
         $min = $r->min;
         $max = $r->max;
+        $type = $r->type;
         $price = $r->price;
         $keuntungan = $r->keuntungan;
         $price_oper = $r->price_oper;
@@ -166,7 +170,24 @@ class AdminController extends Controller
         $scat = Service_cat::where('id',$id)->first();
         return view('developer.services.category.edit', compact('scat'));
     }
-    public function update_service_cat(){}
+    public function update_service_cat(Request $r,$id){
+        $r->validate([
+            'name'=>'required|min:5',
+            'type'=>'required|min:1'
+        ]); 
+
+        $name = $r->name;
+        $type = $r->type;
+        $status = $r->status;
+
+        $cat = Service_cat::find($id);
+        $cat->name = $name;
+        $cat->type = $type;
+        $cat->save();
+
+        session()->flash('success','Sukses tambah kategori!');
+        return redirect(route('services_cat'));   
+    }
 
     public function manage_orders_sosmed(){
         $orders = Order::all();
@@ -192,6 +213,11 @@ class AdminController extends Controller
         session()->flash('success','Sukses ubah data order!');
         return redirect('developer/orders/sosmed');
     }
+
+    public function services_pulsa() {
+        $service = Services_pulsa::all();
+        return view('developer.services.pulsa.index', compact('service'));
+    }
     
     public function manage_orders_pulsa(){}
     public function edit_orders_pulsa(){}
@@ -203,6 +229,10 @@ class AdminController extends Controller
     }
     public function add_users() {
         return view('developer.users.add');
+    }
+    public function users_detail($id) {
+        $user = User::where('id',$id);
+        return view('developer.users.detail', compact('user'));
     }
     public function add_users_post(Request $r) {
         $r->validate([
@@ -291,10 +321,20 @@ class AdminController extends Controller
     public function edit_deposit_method(){}
     public function update_deposit_method(){}
 
-    public function manage_news(){}
-    public function add_news(){}
-    public function edit_news(){}
-    public function update_news(){}
+    public function manage_news(){
+        $news = News::all();
+        return view('developer.news.index', compact('news'));
+    }
+    public function add_news(){
+        return view('developer.news.add');
+    }
+    public function edit_news($id){
+        $news = News::find($id);
+        return view('developer.news.add', compact('news'));
+    }
+    public function update_news(Request $r, $id){
+        $news = News::find($id);
+    }
 
     public function manage_tickets(){}
     public function ticket($id){}
