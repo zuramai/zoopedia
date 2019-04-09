@@ -12,7 +12,53 @@
           </div>
 
           <div class="section-body">
-          
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Order</h4>
+                  </div>
+                  <div class="card-body">
+                    {{$orders->count()}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                  <i class="fas fa-dollar-sign "></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Jumlah Order</h4>
+                  </div>
+                  <div class="card-body">
+                    Rp {{number_format($total,0,',','.')}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Jumlah transaksi sukses </h4>
+                  </div>
+                  <div class="card-body">
+                    {{$success->count()}}
+                  </div>
+                </div>
+              </div>
+            </div>                  
+          </div>
           	<div class="row">
           		<div class="col-md-12">
           			<div class="card">
@@ -20,6 +66,17 @@
 		                <h4><span>Kelola Order</span></h4>
 		              </div>
 		              <div class="card-body">
+                    <div class="float-left">
+                      <form method="GET">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Cari ID order atau target" name="search">
+                          <div class="input-group-append">                                            
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="clearfix mb-3"></div>
 		              	@if(session('success'))
 
                         <div class="alert alert-success" role="alert">
@@ -28,7 +85,7 @@
 
                     	@endif
                           <div class="table-responsive">
-                                <table class="table table-bordered table-md">
+                                <table class="table table-striped table-md">
                                 <tr>
                                     <th>ID</th>
                                     <th>Poid</th>

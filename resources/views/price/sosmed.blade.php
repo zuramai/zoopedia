@@ -35,21 +35,19 @@
 		                        </div>
 						@endif
 
-						<form method="GET">
-							<div class="row">
-								
-								<div class="col-md-6 offset-md-6">
-									<div class="input-group mb-3">
-										<div class="input-group-prepend">
-										    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-										  </div>
-										<input type="text" placeholder="Cari target atau id pesanan" class="form-control" name="search">
-									</div>
-								</div>
-							</div>
-						</form>
+						<div class="float-right">
+	                        <form>
+	                          <div class="input-group">
+	                            <input type="text" class="form-control" placeholder="Search">
+	                            <div class="input-group-append">                                            
+	                              <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+	                            </div>
+	                          </div>
+	                        </form>
+	                      </div>
+	                      <div class="clearfix mb-3"></div>
 						<div class="table-responsive">
-							<table class="table table-bordered table-lg">
+							<table class="table table-striped table-lg">
 								<tr>
 									<th>ID</th>
 									<th>Category</th>

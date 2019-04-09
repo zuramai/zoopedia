@@ -27,16 +27,27 @@
                         </div>
 
                     	@endif
-		              	<div class="card-body-header text-right">
+                      <div class="float-left">
+                          <form method="GET">
+                            <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Cari email atau nama" name="search">
+                              <div class="input-group-append">                                            
+                                <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+		              	<div class=" float-right">
 	  		            	<a href="{{ url('developer/users/add') }}" class="btn btn-primary">Tambah</a>
 	  		            </div>
+                    <div class="clearfix mb-3"></div>
                           <div class="table-responsive">
-                                <table class="table table-bordered table-md">
+                                <table class="table table-striped table-md">
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Balance</th>
+                                    <th>Saldo</th>
                                     <th>Level</th>
                                     <th>Status</th>
                                     <th>API Key</th>
@@ -47,13 +58,13 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->balance }}</td>
+                                    <td>Rp {{ number_format($user->balance) }}</td>
                                     <td>{{ $user->level }}</td>
-                                    <td>{{ $user->status }}</td>
+                                    <td>
+                                      <span class="badge badge-{{ ($user->status =='Active' ? 'success' : 'danger') }}">{{ $user->status }}</span>
+                                    </td>
                                     <td>{{ $user->api_key }}</td>
-                                    <td><div class="badge badge-success">Active</div></td>
                                     <td style="display: inline-block;">
-                                        <a href="{{ url('developer/users/detail/'.$user->id)}}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
                                         <a href="{{ url('developer/users/edit/'.$user->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                         <form method="POST" class="form-delete">
                                             @method('delete')

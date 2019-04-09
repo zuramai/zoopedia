@@ -27,45 +27,59 @@
                         </div>
 
                     	@endif
-		              	<div class="card-body-header text-right">
-	  		            	<a href="{{ url('developer/services/add') }}" class="btn btn-primary">Tambah</a>
-	  		            </div>
-		                <table class="table table-bordered table-md">
-                        <tr>
-                          <th>ID</th>
-                          <th>Nama</th>
-                          <th>Kategori</th>
-                          <th>Min</th>
-                          <th>Max</th>
-                          <th>Price</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                        </tr>
-                        @foreach($service as $data)
-                        <tr>
-                          <td>{{ $data->id }}</td>
-                          <td>{{ $data->name }}</td>
-                          <td>{{ $data->category->name }}</td>
-                          <td>{{ $data->min }}</td>
-                          <td>{{ $data->max }}</td>
-                          <td>{{ $data->price }}</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td style="display: inline-block;">
-                          	<a href="{{ url('developer/services/detail/'.$data->id)}}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
-                          	<a href="{{ url('developer/services/edit/'.$data->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                          	<form method="POST" class="form-delete">
-                                @method('delete')
-                                @csrf
-                                <input type="hidden" value="{{ $data->id }}" name="id">
-                                <button type="submit" class="btn btn-danger">
-                                	<i class="fa fa-trash"></i>
-                                </button>
-                              </form>
+                    <div class="float-left">
+                      <form method="GET">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Cari nama layanan" name="search">
+                          <div class="input-group-append">                                            
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="float-right">
+                      <a href="{{ url('developer/services/add') }}" class="btn btn-primary">Tambah</a>
+                    </div>
+                    <div class="clearfix mb-3"></div>
+                    <div class="table-responsive">
+  		                <table class="table table-striped table-md">
+                          <tr>                          
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Kategori</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                          @foreach($service as $data)
+                          <tr>
+                            <td>{{ $data->id }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->category->name }}</td>
+                            <td>{{ $data->min }}</td>
+                            <td>{{ $data->max }}</td>
+                            <td>Rp {{ $data->price + $data->keuntungan }}</td>
+                            <td><span class="badge badge-{{ $data->status=='Active' ? 'success' : 'danger' }}">{{$data->status}}</span></td>
+                            <td style="display: inline-block;">
+                            	<a href="{{ url('developer/services/detail/'.$data->id)}}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
+                            	<a href="{{ url('developer/services/edit/'.$data->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                            	<form method="POST" class="form-delete">
+                                  @method('delete')
+                                  @csrf
+                                  <input type="hidden" value="{{ $data->id }}" name="id">
+                                  <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Saran: Jangan hapus layanan, karena akan menghapus seluruh data order dengan layanan ini. Lebih baik nonaktifkan layanan">
+                                  	<i class="fa fa-trash"></i>
+                                  </button>
+                                </form>
 
-                          </td>
-                        </tr>
-                        @endforeach
+                            </td>
+                          </tr>
+                          @endforeach
                       </table>
+                    </div>
+                    {{$service->links()}}
 		              </div>
 		            </div>
           		</div>

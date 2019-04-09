@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class DeveloperMiddleware
 {
@@ -15,6 +16,9 @@ class DeveloperMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::user()->level == 'Developer'){
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

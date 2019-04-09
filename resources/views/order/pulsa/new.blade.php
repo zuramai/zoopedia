@@ -28,7 +28,7 @@
 		                        </div>
 			              	@elseif(session('danger'))
 		                        <div class="alert alert-danger" role="alert">
-		                            <i class="fa fa-exclamation-circle"></i> {{ session('danger') }}
+		                            <i class="fa fa-exclamation-circle"></i> {!! session('danger') !!}
 		                        </div>
 		                    @endif
 		                    @if ($errors->has('quantity'))
@@ -46,26 +46,33 @@
 		                      </select>
 		                    </div>
 			                <div class="form-group">
+		                      <label>Operator</label>
+		                      <select class="form-control select2" id="operator_pulsa" name="service">
+		                        <option value="">Pilih kategori terlebih dahulu</option>
+		                      </select>
+		                    </div>
+			                <div class="form-group">
 		                      <label>Layanan</label>
 		                      <select class="form-control select2" id="service_pulsa" name="service">
-		                        <option value="">Pilih kategori terlebih dahulu</option>
+		                        <option value="">Pilih operator terlebih dahulu</option>
 		                      </select>
 		                    </div>
 		                    <div id="information">
 			                    
 		                    </div>
 			                <div class="form-group">
-		                      <label>Target (BACA NOTE)	</label>
-		                      <input type="text" class="form-control" name="target">
+		                      <label>Nomor telepon tujuan 	</label>
+		                      <input type="text" class="form-control" name="target" id="tujuan">
 		                    </div>
+		                    <div class="form-group" id='pln' style='display:none'>
+		                      <label>Nomor Meter PLN 	</label>
+		                      <input type="text" class="form-control" name="pln" id="plninput">
+		                    </div>
+		                    
 		                    <input type="hidden" name="price" id="price">
 			                <div class="form-group">
-		                      <label>Quantity</label>
-		                      <input type="number" class="form-control" id="quantity" name="quantity">
-		                    </div>
-			                <div class="form-group">
 		                      <label>Total Price</label>
-		                      <input type="number" class="form-control" id="total" readonly>
+		                      <input type="number" class="form-control" id="total" readonly >
 		                    </div>
 			              </div>
 			              <div class="card-footer text-right">

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>{{env('WEB_TITLE')}}</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{{env('APP_NAME')}}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('modules/bootstrap/css/bootstrap.min.css')}}">
@@ -30,220 +31,73 @@
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
-        <form class="form-inline mr-auto">
-          <ul class="navbar-nav mr-3">
+          <ul class="navbar-nav mr-auto">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-            <div class="search-result">
-              <div class="search-header">
-                Histories
-              </div>
-              <div class="search-item">
-                <a href="#">How to hack NASA using CSS</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">Kodinger.com</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">#Stisla</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-header">
-                Result
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-3-50.png" alt="product">
-                  oPhone S9 Limited Edition
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-2-50.png" alt="product">
-                  Drone X2 New Gen-7
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-1-50.png" alt="product">
-                  Headphone Blitz
-                </a>
-              </div>
-              <div class="search-header">
-                Projects
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-danger text-white mr-3">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  Stisla Admin Template
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-primary text-white mr-3">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  Create a new Homepage Design
-                </a>
-              </div>
-            </div>
-          </div>
-        </form>
+        
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Messages
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-message">
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle">
-                    <div class="is-online"></div>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b>
-                    <p>Hello, Bro!</p>
-                    <div class="time">10 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-2.png" class="rounded-circle">
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Dedik Sugiharto</b>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-3.png" class="rounded-circle">
-                    <div class="is-online"></div>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Agung Ardiansyah</b>
-                    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-4.png" class="rounded-circle">
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Ardian Rahardiansyah</b>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
-                    <div class="time">16 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle">
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Alfa Zulkarnain</b>
-                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                    <div class="time">Yesterday</div>
-                  </div>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
+          
+          @if(Auth::check())
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Notifications
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
+              <div class="dropdown-header">Berita
+                  
               </div>
               <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-icon bg-primary text-white">
-                    <i class="fas fa-code"></i>
+                @foreach(config('news') as $news)
+                <a href="{{ url('/news') }}" class="dropdown-item">
+                    @if($news->type == 'Info')
+                    <div class="dropdown-item-icon bg-info text-white">
+                      <i class="fas fa-bell"></i>
+                    @elseif($news->type == 'Service')
+                    <div class="dropdown-item-icon bg-success text-white">
+                      <i class="fas fa-file-invoice   "></i>
+                    @elseif($news->type == 'Maintenance')
+                    <div class="dropdown-item-icon bg-danger text-white">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    @else
+                    <div class="dropdown-item-icon bg-primary text-white">
+                      <i class="fas fa-info"></i>
+                    @endif
                   </div>
                   <div class="dropdown-item-desc">
-                    Template update is available now!
-                    <div class="time text-primary">2 Min Ago</div>
+                    {{$news->title}}
+                    <div class="time">{{$news->created_at->diffForHumans()}}</div>
                   </div>
                 </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-info text-white">
-                    <i class="far fa-user"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>You</b> and <b>Dedik Sugiharto</b> are now friends
-                    <div class="time">10 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-success text-white">
-                    <i class="fas fa-check"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-danger text-white">
-                    <i class="fas fa-exclamation-triangle"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    Low disk space. Let's clean it!
-                    <div class="time">17 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-info text-white">
-                    <i class="fas fa-bell"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    Welcome to Stisla template!
-                    <div class="time">Yesterday</div>
-                  </div>
-                </a>
+                @endforeach
               </div>
               <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                <a href="{{ url('/news') }}">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
           </li>
+          
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{asset('img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
+            <img alt="image" src="{{asset('img/users/'.auth()->user()->photo)}}" class="rounded-circle mr-1 img-header">
             <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
+              <div class="dropdown-title">Logged in 
+                {{config('last_login')->created_at->diffForHumans()}}
+              </div>
+              <a href="{{ url('/activity') }}" class="dropdown-item has-icon">
                 <i class="fas fa-bolt"></i> Activities
               </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
+              <a href="{{url('/users/settings')}}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="#" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt"></i> Logout
               </a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
             </div>
           </li>
+          @endif
         </ul>
       </nav>
       <div class="main-sidebar sidebar-style-2">
@@ -256,14 +110,17 @@
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Main navigation</li>
-            <li><a class="nav-link" href=" "><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="/"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+
+            @if(auth()->user()->level == 'Developer')
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-unlock-alt "></i> <span>Developer Menu</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{url('developer/users')}}">Kelola Pengguna</a></li>
                 <li><a class="nav-link" href="{{url('developer/orders/sosmed')}}"> Kelola Pesanan Sosmed</a></li>
                 <li><a class="nav-link" href="{{url('developer/orders/pulsa')}}"> Kelola Pesanan Pulsa</a></li>
-                <li><a class="nav-link" href="{{route('services_cat')}}"> Kelola Kategori Layanan</a></li>
+                <li><a class="nav-link" href="{{route('services_cat')}}"> Kelola Kategori Sosmed</a></li>
+                <li><a class="nav-link" href="{{route('services_cat_pulsa')}}"> Kelola Kategori Pulsa</a></li>
                 <li><a class="nav-link" href="{{route('dev_services')}}"> Kelola Layanan Sosmed</a></li>
                 <li><a class="nav-link" href="{{route('dev_services_pulsa')}}"> Kelola Layanan Pulsa</a></li>
                 <li><a class="nav-link" href="{{url('developer/deposit')}}"> Kelola Deposit</a></li>
@@ -271,16 +128,28 @@
                 <li><a class="nav-link" href="{{url('developer/news')}}"> Kelola Berita</a></li>
                 <li><a class="nav-link" href="{{url('developer/tickets')}}"> Kelola Tiket</a></li>
                 <li><a class="nav-link" href="{{url('developer/providers')}}"> Kelola Provider</a></li>
-                <li><a class="nav-link" href="{{url('developer/history')}}"> History All Transaksi</a></li>
+                <li><a class="nav-link" href="{{url('developer/staff')}}"> Kelola Staff</a></li>
+                <li><a class="nav-link" href="{{url('developer/invitation_code')}}"> Kelola Kode Undangan</a></li>
+                <li><a class="nav-link" href="{{url('developer/activity')}}"> Log Aktifitas</a></li>
                 
               </ul>
             </li>
+            @endif
+            @if(auth()->user()->level != 'Member')
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-unlock-alt "></i> <span>Staff Menu</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{{url('staff/add_user')}}"> Tambah User</a></li>
+                <li><a class="nav-link" href="{{url('staff/voucher')}}"> Kode Voucher</a></li>
+              </ul>
+            </li>
+            @endif
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Sosial Media</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{route('order_sosmed')}}">Pemesanan baru</a></li>
                 <li><a class="nav-link" href="{{route('sosmed_history')}}"> Riwayat Pemesanan</a></li>
-                <li><a class="nav-link" href="{{url('order/sosmed/statistic')}}">Statistik Order</a></li>
+                <!-- <li><a class="nav-link" href="{{url('order/sosmed/statistic')}}">Statistik Order</a></li> -->
               </ul>
             </li>
             <li class="dropdown">
@@ -288,22 +157,27 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{route('order_pulsa')}}">Pemesanan baru</a></li>
                 <li><a class="nav-link" href="{{route('order_pulsa_history')}}"> Riwayat Pemesanan</a></li>
-                <li><a class="nav-link" href="{{url('order/statistic')}}">Statistik Order</a></li>
+                <!-- <li><a class="nav-link" href="{{url('order/statistic')}}">Statistik Order</a></li> -->
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fab fa-whatsapp"></i> <span>Whatsapp Gateway</span></a>
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-fire"></i> <span>Lainnya</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{route('order_pulsa')}}">Kirim Pesan</a></li>
-                <li><a class="nav-link" href="{{route('order_pulsa')}}">Sender Status</a></li>
-                <li><a class="nav-link" href="{{route('order_pulsa_history')}}"> Riwayat Pesan</a></li>
+                <li><a class="nav-link" href="{{url('news')}}">Berita</a></li>
+                <li><a class="nav-link" href="{{url('hall_of_fame')}}">Top 10</a></li>
+                <li><a class="nav-link" href="{{url('activity')}}"> Riwayat Aktifitas</a></li>
+                <li><a class="nav-link" href="{{url('balance_usage')}}">Penggunaan Saldo</a></li>
+                <li><a class="nav-link" href="{{url('voucher')}}">Kode Voucher</a></li>
               </ul>
+            </li>
+            <li>
+              <a href="{{ url('ticket') }}" class="nav-link " ><i class="fas fa-envelope"></i> <span>Tiket</span></a>
             </li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-dollar-sign "></i> <span>Deposit</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{url('deposit/new')}}">Deposit Baru</a></li>
-                <li><a class="nav-link" href="{{url('deposit/history')}}">Riwayat Isi Saldo</a></li>
+                <li><a class="nav-link" href="{{url('deposit/history')}}">Riwayat Deposit</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -320,16 +194,11 @@
                 <li><a class="nav-link" href="{{url('api/pulsa/doc')}}">Pulsa & PPOB</a></li>
               </ul>
             </li>
-            
-            
-            <li class="menu-header">Pages</li>
-            <li><a href=" " class="nav-link"><i class="fas fa-fire"></i><span>Settings</span></a></li>
+            <li><a href="{{ url('/contact') }}" class="nav-link"><i class="fas fa-users"></i><span>Kontak Admin</span></a></li>
+            <li><a href="{{ url('/users/settings') }}" class="nav-link"><i class="fas fa-cogs"></i><span>Settings</span></a></li>
 
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Documentation
-            </a>
-          </div>        </aside>
+        
+        </aside>
       </div>
 
       <!-- Main Content -->
@@ -338,7 +207,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+          Copyright &copy; {{date('Y')}} <div class="bullet"></div> Build with ♥ by <a href="https://www.zuramai.net/">Zuramai Network</a>
         </div>
         <div class="footer-right">
           
@@ -363,89 +232,224 @@
   <script src="{{asset('modules/summernote/summernote-bs4.js')}}"></script>
   <script src="{{asset('modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 
+@if(url()->current() == url('/') || url()->current() == url('/') || url()->current() == url('/home'))
+  <script type="text/javascript">
+    var data_sosmed = new Array(0,0,0,0,0,0,0,0,0,0,0,0)
+    @foreach($order_sosmed as $sosmed)
+
+    data_sosmed[{{$sosmed->month}}] = {{$sosmed->total}}
+    @endforeach
+
+    var data_pulsa = new Array(0,0,0,0,0,0,0,0,0,0,0,0)
+    @foreach($order_pulsa as $pulsa)
+
+    data_pulsa[{{$pulsa->month}}] = {{$pulsa->total}}
+    @endforeach
+
+    console.log(data_pulsa)
+  </script>
+@endif
+
   <!-- Page Specific JS File -->
+
   <script src="{{asset('js/page/index.js')}}"></script>
   <script src="{{asset('modules/sweetalert/sweetalert.min.js')}}"></script>
-  
+  @include('sweet::alert')
   <!-- Template JS File -->
   <script src="{{asset('js/scripts.js')}}"></script>
   <script src="{{asset('js/function.js')}}"></script>
   <script src="{{asset('js/custom.js')}}"></script>
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  
   <script type="text/javascript">
-        $(document).ready(function(){
-            $('#category').change(function(){
-                console.log('a')
-                var cat = $('#category').val();
-                $.ajax({
-                    url: "{{url('order/sosmed/ajax/get_service')}}",
-                    type: 'POST',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        "cat_id": cat
-                    },
-                    success:function(result){
-                        $('#service').html(result)
-                        console.log(result)
-                    }
-                }) 
-            });
-            $('#service').change(function(){
-                var service = $('#service').val();
-                $.ajax({
-                    url: "{{url('order/sosmed/ajax/get_service_data')}}",
-                    type: 'POST',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        "sid": service
-                    },
-                    success:function(result){
-                        $('#information').html(result)
-                        console.log("success data")
-                    }
-                })
-                $.ajax({
-                    url: "{{url('order/sosmed/ajax/get_price')}}",
-                    type: 'POST',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        "sid": service
-                    },
-                    success:function(result){
-                        $('#price').val(result)
-                        console.log("success price")
-                    }
-                })
-            })
-            $('#quantity').keyup(function(){
-                var qty = $('#quantity').val();
-                var price = $('#price').val();
+        
 
-                var total = price/1000 * qty;
 
-                $('#total').val(total)
-            })
-            $('#cancel_deposit').click(function(){
-               
-              cancel_deposit($(this).attr('data-delete'));
-            })
-          })
-        function cancel_deposit(id){
-          swal({
-            title: 'Are you sure?',
-            text: 'Once deleted, you will not be able to recover this imaginary file!',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              swal('Sukses batalkan deposit!', {
-                icon: 'success',
+  $(document).ready(function(){
+    var csrf_token = $("meta[name='csrf-token']").attr('content');
+    $('#category').change(function(){
+        console.log('a')
+        var cat = $('#category').val();
+        $.ajax({
+            url: "{{url('order/sosmed/ajax/get_service')}}",
+            type: 'POST',
+            data: {
+                "_token": csrf_token,
+                "cat_id": cat
+            },
+            success:function(result){
+                $('#service').html(result)
+            }
+        }) 
+    });
+    $('#service').change(function(){
+        var service = $('#service').val();
+        $.ajax({
+            url: "{{url('order/sosmed/ajax/get_service_data')}}",
+            type: 'POST',
+            data: {
+                "_token": csrf_token,
+                "sid": service
+            },
+            success:function(result){
+                $('#information').html(result)
+            }
+        })
+        $.ajax({
+            url: "{{url('order/sosmed/ajax/get_price')}}",
+            type: 'POST',
+            data: {
+                "_token": csrf_token,
+                "sid": service
+            },
+            success:function(result){
+                $('#price').val(result)
+            }
+        })
+
+        $.ajax({
+          url: "{{url('order/sosmed/ajax/check_sosmed')}}",
+          type: 'POST',
+          data: {
+            "_token": csrf_token,
+            "sid": service
+          },
+          success: function(result) {
+            if(result == 'custom_comment') {
+              $('#custom_comment').css('display','block');
+              $('#quantity').attr('readonly','true');
+              $('#t_custom_comment').keyup(function() {
+                var text = $("#t_custom_comment").val();   
+                var lines = text.split(/\r|\r\n|\n/);
+                var count = lines.length;
+                $('#quantity').val(count);
+                var total = $('#price').val() / 1000 * count
+                $('#total').val(total);
               });
-            } 
-          });
-        };
+            }else if(result == 'likes_comment') {
+              $('#likes_comment').css('display','block');
+            }
+          }
+        });
+    })
+    $('#quantity').keyup(function(){
+        var qty = $('#quantity').val();
+        var price = $('#price').val();
+
+        var total = price/1000 * qty;
+
+        $('#total').val(total)
+    })
+    $('#cancel_deposit').click(function(){
+       
+      cancel_deposit($(this).attr('data-delete'));
+    })
+
+    $('#category_pulsa').change(function() {
+      var category = $('#category_pulsa').val();
+      var service = $('#service_pulsa');
+      var operator = $('#operator_pulsa');
+        // console.log("success");
+      $.ajax({
+        url: "{{url('order/pulsa/ajax/get_service_pulsa')}}",
+        type: 'POST',
+        data: {
+            "_token": csrf_token,
+            "id": category
+        },
+        success: function(result) {
+          operator.html(result)
+        }
+      });
+    });
+
+    $('#operator_pulsa').change(function() {
+      var category = $('#category_pulsa').val();
+      var operator = $('#operator_pulsa').val();
+      var service = $('#service_pulsa');
+
+      $.ajax({
+        url: "{{url('order/pulsa/ajax/get_type_pulsa')}}",
+        type: 'POST',
+        data: {
+            "_token": csrf_token,
+            "id": operator
+        },
+        success: function(result) {
+          service.html(result)
+        }
+      });
+    });
+
+    $('#service_pulsa').change(function() {
+      var service_pulsa = $('#service_pulsa').val();
+      var price = $('#total');
+      $.ajax({
+        url: "{{url('order/pulsa/ajax/get_price_pulsa')}}",
+        type: 'POST',
+        data: {
+            "_token": csrf_token,
+            "id": service_pulsa
+        },
+
+        success: function(result) {
+          price.val(result)
+        }
+
+      });
+    });
+
+    $('#type').change(function() {
+
+      var type = $('#type').val();
+      var method = $('#method');
+      var newType = "AUTO";
+      if(type == "Otomatis") 
+        newType = "AUTO"
+      else if(type == "Manual")
+        newType = "MANUAL"
+
+      $.ajax({
+        type: "POST",
+        url: "{{ url('deposit/get_method') }}",
+        data: {
+          "_token": csrf_token,
+          "type": newType
+        },
+        success:function(result) {
+          console.log(result);
+          method.html(result);
+        }
+      });
+    });
+    $('#method').change(function() {
+      var method = $('#method').val();
+      $.ajax({
+        url: "{{ url('deposit/get_rate') }}",
+        method: 'POST',
+        data: {
+          "_token": csrf_token,
+          "method": method
+        },
+        success:function(result) {
+          $('#rate_deposit').val(result);
+        }
+
+      })
+    });
+
+    $('#quantity_deposit').keyup(function() {
+      var quantity = $('#quantity_deposit').val();
+      var rate = $('#rate_deposit').val();
+      var get_balance = $('#get_balance'); 
+
+      var final = quantity * rate;
+      get_balance.val(final)
+    }); 
+  })
+        
+
+
            
         
     </script>

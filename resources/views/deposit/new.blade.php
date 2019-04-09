@@ -30,11 +30,15 @@
 		                            <i class="fa fa-exclamation-circle"></i> {{ session('danger') }}
 		                        </div>
 		                    @endif
-		                    @if ($errors->has('quantity'))
-			                    	<div class="alert alert-danger" role="alert">
-			                            <i class="fa fa-exclamation-circle"></i> {{ $errors->first('quantity') }}
-			                        </div>
-							@endif
+		                    @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 			                <div class="form-group">
 		                      <label>Tipe</label>
 		                      <select class="form-control select2" id="type" name="type">
@@ -45,17 +49,8 @@
 		                    </div>
 			                <div class="form-group">
 		                      <label>Metode deposit</label>
-		                      <select class="form-control select2" id="method" name="service">
-		                        <option value="">Tipe</option>
-		                        <option value="ATM">ATM</option>
-		                        <option value="ATM">Paypal</option>
-		                        <option value="OVO">OVO</option>
-		                        <option value="GOPAY">GOPAY</option>
-		                        <option value="INDOMARET">Indomaret</option>
-		                        <option value="ALFAMART">ALFAMART</option>
-		                        <option value="TELKOMSEL">Pulsa Telkomsel</option>
-		                        <option value="XL">Pulsa XL/Axis</option>
-
+		                      <select class="form-control select2" id="method" name="method">
+		                        <option value="">Pilih tipe terlebih dahulu..</option>
 		                      </select>
 		                    </div>
 			                <div class="form-group">
@@ -67,9 +62,10 @@
 		                      <label>Jumlah</label>
 		                      <input type="number" class="form-control" id="quantity_deposit" name="quantity">
 		                    </div>
+		                    <input type="hidden" name="rate" id="rate_deposit">
 			                <div class="form-group">
 		                      <label>Get balance</label>
-		                      <input type="number" class="form-control" id="total" readonly>
+		                      <input type="number" class="form-control" id="get_balance" readonly>
 		                    </div>
 			              </div>
 			              <div class="card-footer text-right">

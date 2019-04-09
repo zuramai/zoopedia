@@ -3,10 +3,11 @@
 @section('content')
 <section class="section">
           <div class="section-header">
-            <h1>Isi Saldo </h1>
+            <h1>Riwayat Deposit </h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Isi saldo</a></div>
+              <div class="breadcrumb-item"><a href="#">Deposit</a></div>
+              <div class="breadcrumb-item">History</div>
             </div>
           </div>
 
@@ -16,7 +17,7 @@
           		<div class="col-md-12">
           			<div class="card">
 		              <div class="card-header">
-		                <h4><span>Isi saldo</span></h4>
+		                <h4><span>Riwayat Deposit</span></h4>
                   </div>
                   <div class="card-body">
                      @if(session('success'))
@@ -28,7 +29,7 @@
                     @endif
   		              
                     <div class="table-responsive">
-                      <table class="table table-bordered table-md">
+                      <table class="table table-striped table-md">
                           <tr>
                             <th>#</th>
                             <th>Tanggal</th>
@@ -41,7 +42,7 @@
                           </tr>
                           @foreach($deposit as $data)
                           <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $data->id }}</td>
                             <td>{{$data->created_at}}</td>
                             <td>{{$data->methods->name}}</td>
                             <td>{{$data->quantity}}</td>
@@ -50,19 +51,22 @@
                             <td><span class="badge badge-{{ $data->status=='Success' ? 'success' : ($data->status == 'Pending') ? 'warning' : 'danger' }}">{{$data->status}}</span></td>
                             <td>
                               @if($data->methods->type == 'MANUAL')
-                                <a href="{{ url('developer/services_cat/edit/'.$data->id) }}" class="btn btn-info">Konfirmasi</a>
+                                <a href="{{ url('contact') }}" class="btn btn-info">Konfirmasi</a>
                               @endif
+                              @if(!$data->status == 'Canceled' || !$data->status == 'Success')
                               <form method="POST" class="form-delete">
                                 @csrf
+                                @method('delete')
                                 <input type="hidden" value="{{ $data->id }}" name="id">
-                                <button type="button" class="btn btn-danger" id="cancel_deposit" data-delete='{{ $data->id }}'>Cancel</button>
+                                <button type="submit" class="btn btn-danger" id="cancel_deposit" data-delete='{{ $data->id }}'>Cancel</button>
                               </form>
+                              @endif
                             </td>
                           </tr>
                           @endforeach
                       </table>
                     </div>
-                    
+                    {{ $deposit->links() }}
                   </div>
 		            </div>
           		</div>

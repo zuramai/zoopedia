@@ -7,7 +7,7 @@
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Developer</a></div>
-              <div class="breadcrumb-item">Services</div>
+              <div class="breadcrumb-item">Services Pulsa</div>
             </div>
           </div>
 
@@ -27,45 +27,82 @@
                         </div>
 
                     	@endif
-		              	<div class="card-body-header text-right">
-	  		            	<a href="{{ url('developer/services/add') }}" class="btn btn-primary">Tambah</a>
-	  		            </div>
-		                <table class="table table-bordered table-md">
+		              	
+		                <div class="float-left">
+                      <a href="{{ url('developer/services_pulsa/add') }}" class="btn btn-primary">Tambah Layanan</a>
+                    </div>
+                      <div class="float-right">
+                        <form method="GET">
+                          <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                    <div class="clearfix mb-3"></div>
+
+                    <div class="table-responsive">
+                      <table class="table table-striped">
                         <tr>
-                          <th>ID</th>
-                          <th>Nama</th>
-                          <th>Kategori</th>
-                          <th>Min</th>
-                          <th>Max</th>
+                          <th>#</th>
+                          <th>Code</th>
+                          <th>Name</th>
+                          <th>Category</th>
+                          <th>Operator</th>
                           <th>Price</th>
                           <th>Status</th>
+                          <th>Provider</th>
                           <th>Action</th>
                         </tr>
-                        @foreach($service as $data)
+                        @foreach($services as $service)
                         <tr>
-                          <td>{{ $data->id }}</td>
-                          <td>{{ $data->name }}</td>
-                          <td>{{ $data->category->name }}</td>
-                          <td>{{ $data->min }}</td>
-                          <td>{{ $data->max }}</td>
-                          <td>{{ $data->price }}</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td style="display: inline-block;">
-                          	<a href="{{ url('developer/services/detail/'.$data->id)}}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>
-                          	<a href="{{ url('developer/services/edit/'.$data->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                          	<form method="POST" class="form-delete">
+                          <td>
+                            {{ $service->id }}
+                          </td>
+                          <td>
+                            {{$service->code}}
+                          </td>
+                          <td>
+                            {{$service->name}}
+                          </td>
+                          <td>
+                            {{$service->category->name}}
+                          </td>
+                          <td>
+                            {{$service->oprator->name}}
+                          </td>
+                          <td>
+                            {{$service->price}}
+                          </td>
+                          <td>
+                            {{$service->status}}
+                          </td>
+                          <td>
+                            {{$service->provider->name}}
+                          </td>
+                          <td>
+                            <a href="{{ url('developer/services_pulsa/edit/'.$service->id) }}" class="btn btn-primary">
+                              <i class="fa fa-edit"></i>
+                            </a>  
+                              <form method="POST" class="form-delete">
                                 @method('delete')
                                 @csrf
-                                <input type="hidden" value="{{ $data->id }}" name="id">
-                                <button type="submit" class="btn btn-danger">
-                                	<i class="fa fa-trash"></i>
-                                </button>
+                                <input type="hidden" value="{{ $service->id }}" name="id">
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                               </form>
-
                           </td>
                         </tr>
                         @endforeach
                       </table>
+                    </div> 
+                    <div class="mt-2"></div>
+                    {{ $services->links() }}   
+                  </div>
+                
+                </div>
 		              </div>
 		            </div>
           		</div>

@@ -36,21 +36,19 @@
                                 <label>Tipe</label>
                                 <select class="form-control" name="type">
                                   <option>Select one..</option>
+                                  <option value="Service">Service</option>
+                                  <option value="Info">Info</option>
                                   <option value="Update">Update</option>
-                                  <option value="New Services">New Services</option>
+                                  <option value="Maintenance">Maintenance</option>
                                 </select>
+                              </div>
+                              <div class="form-group">
+                                <label>Judul</label>
+                                <input type="text" class="form-control" name="title">
                               </div>
                               <div class="form-group">
                                 <label>Konten</label>
                                 <textarea class="form-control" name="content"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Tipe</label>
-                                <select class="form-control" name="type">
-                                  <option value="">Choose one..</option>
-                                  <option value="SOSMED">Sosial Media</option>
-                                  <option value="PULSA">Pulsa</option>
-                                </select>
                               </div>
                               
                           </div>

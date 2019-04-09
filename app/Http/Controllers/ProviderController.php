@@ -20,7 +20,8 @@ class ProviderController extends Controller
     	$prov = new Provider;
     	$prov->name = $r->name;
     	$prov->api_key = $r->key;
-    	$prov->link = $r->link;
+        $prov->link = $r->link;
+    	$prov->type = $r->type;
     	$prov->save();
 
     	session()->flash('success','Sukses tambah provider!');
@@ -28,7 +29,8 @@ class ProviderController extends Controller
     }
 
     public function edit($id) {
-    	$prov = Provider::where('id',$id)->first();
+    	$prov = Provider::find($id);
+        
     	return view('developer.providers.edit',compact('prov'));
     }
 
@@ -37,7 +39,8 @@ class ProviderController extends Controller
     	$prov->name = $r->name;
     	$prov->api_key = $r->key;
     	$prov->link = $r->link;
-    	$prov->save();
+    	$prov->type = $r->type;
+        $prov->save();
 
     	session()->flash("success",'Sukses update data provider!');
     	return redirect('developer/providers');

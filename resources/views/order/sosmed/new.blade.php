@@ -31,11 +31,15 @@
 		                            <i class="fa fa-exclamation-circle"></i> {{ session('danger') }}
 		                        </div>
 		                    @endif
-		                    @if ($errors->has('quantity'))
-			                    	<div class="alert alert-danger" role="alert">
-			                            <i class="fa fa-exclamation-circle"></i> {{ $errors->first('quantity') }}
-			                        </div>
-							@endif
+		                    @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 			                <div class="form-group">
 		                      <label>Kategori</label>
 		                      <select class="form-control select2" id="category">
@@ -57,6 +61,16 @@
 			                <div class="form-group">
 		                      <label>Target (BACA NOTE)	</label>
 		                      <input type="text" class="form-control" name="target">
+		                    </div>
+		                    <div id="additional">
+		                    	<div class="form-group"  id="custom_comment" style="display: none">
+			                    	<label>Custom Comment (1 komen = 1 baris)</label>
+			                    	<textarea class="form-control" placeholder="Masukkan komentar per baris" name="custom_comment" id="t_custom_comment"></textarea>
+		                    	</div>
+		                    	<div class="form-group" id="comment_likes"  style="display: none">
+			                    	<label>Custom Likes (1 komen = 1 baris)</label>
+			                    	<input type="text" class="form-control" name="comment_likes" placeholder="Masukkan username yang melakukan komentar">
+		                    	</div>
 		                    </div>
 		                    <input type="hidden" name="price" id="price">
 			                <div class="form-group">
@@ -83,7 +97,7 @@
           					<ol>
           						<li>Pilih kategori terlebih dahulu</li>
           						<li>Pilih layanan yang ingin digunakan</li>
-          						<li>Masukkan target sesuai aturan. Instagram followers menggunakan username, Selengkapnya: <a href="">Cara memasukkan target</a></li>
+          						<li>Masukkan target sesuai aturan. Instagram followers menggunakan username, Selengkapnya: <a href="{{ url('/order/sosmed/terms_of_service') }}">Cara memasukkan target</a></li>
           						<li>Masukkan jumlah yang ingin dipesan</li>
           						<li>Tekan tombol submit dan pesanan anda akan segera diproses</li>
           					</ol>

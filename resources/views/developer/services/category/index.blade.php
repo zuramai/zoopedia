@@ -13,11 +13,11 @@
 
           <div class="section-body">
           
-          	<div class="row">
-          		<div class="col-md-12">
-          			<div class="card">
-		              <div class="card-header">
-		                <h4><span>Kelola Kategori Layanan</span></h4>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4><span>Kelola Kategori Sosial Media</span></h4>
                   </div>
                   <div class="card-body">
                      @if(session('success'))
@@ -27,11 +27,23 @@
                         </div>
 
                     @endif
-  		              <div class="card-body-header text-right">
-  		                <a href="{{ route('dev_services_add_post') }}" class="btn btn-primary">Tambah</a>
-  		              </div>
+                    <div class="float-left">
+                      <form method="GET">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Cari nama layanan" name="search">
+                          <div class="input-group-append">                                            
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="float-right">
+                      <a href="{{ route('dev_services_add_post') }}" class="btn btn-primary">Tambah</a>
+                    </div>
+                    <div class="clearfix mb-3"></div>
+                    
                     <div class="table-responsive">
-                      <table class="table table-bordered table-md">
+                      <table class="table table-striped table-md">
                           <tr>
                             <th>#</th>
                             <th>Name</th>
@@ -51,7 +63,7 @@
                                 @method('delete')
                                 @csrf
                                 <input type="hidden" value="{{ $data->id }}" name="id">
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Jika menghapus kategori, akan menghapus semua layanan dengan provider tersebut">Delete</button>
                               </form>
                             </td>
                           </tr>
@@ -60,8 +72,11 @@
                     </div>
                     {{$service_cat->links()}}
                   </div>
-		            </div>
-          		</div>
+                </div>
+              </div>
+              
+            </div>
+          	<div class="row">
           	</div>
             
           </div>

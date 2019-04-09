@@ -17,3 +17,53 @@ pre {
 .section-api {
 	margin-top: 40px;
 }
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.inline-button {
+	display: inline-flex;
+}
+
+.inline-button > * {
+	margin-left: 10px;
+}
+
+.img-setting {
+	width: 120px;
+	border-radius: 50%;
+	height: 120px;
+	object-fit: cover;
+	margin-bottom: 20px;
+}
+
+.form-hide {
+	opacity: 0;
+}
+
+.img-header {
+	height: 30px;
+	object-fit: cover;
+}
+
+.image {
+	margin-bottom: 20px;
+
+}
+
+.alert-danger > ul {
+	margin-bottom: 0;
+}
+
+.img-kecil {
+	height: 40px;
+	width: 40px;
+	object-fit: cover;
+}
+
+.image-contact {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}

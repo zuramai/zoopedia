@@ -51,7 +51,7 @@
 								</div>
 						</div>					
 						<div class="table-responsive">
-							<table class="table table-bordered table-md">
+							<table class="table table-striped table-md">
 								<tr>
 									<th>Total Order</th>
 									<th>Orderan Berstatus Success</th>

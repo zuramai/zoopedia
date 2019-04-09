@@ -37,11 +37,20 @@
                                 <input type="text" placeholder="Nama layanan.." class="form-control" name="name" value="{{ $service->name }}">
                               </div>
                               <div class="form-group">
+                                <label>Tipe Layanan</label>
+                                <select name="type" class="form-control">
+                                  <option>Pilih tipe..</option>
+                                  <option value="Basic" {{ $service->type == 'Basic' ? 'selected' : '' }}>Layanan biasa</option>
+                                  <option value="Custom Comment" {{ $service->type == 'Custom Comment' ? 'selected' : '' }}>Custom Comment</option>
+                                  <option value="Comment Likes" {{ $service->type == 'Comment Likes' ? 'selected' : '' }}>Comment Likes</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
                                 <label>Kategori</label>
                                 <select class="form-control" name="category">
                                   <option value="">Choose one..</option>
                                   @foreach($category as $cat)
-                                    <option value="{{ $cat->id }}" {{ $service->category_id == '$cat->id' ? 'selected' : '' }}>{{ $cat->name }}</option>
+                                    <option value="{{ $cat->id }}" {{ $service->category_id == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
                                   @endforeach
                                 </select>
                               </div>
@@ -87,11 +96,19 @@
                                     <label>Provider</label>
                                     <select class="form-control" name="provider">
                                       @foreach($provider as $prov)
-                                        <option value="{{$prov->id}}" {{ $service->provider == '$prov->id' ? 'selected' : '' }}>{{$prov->name}}</option>
+                                        <option value="{{$prov->id}}" {{ $service->provider_id == $prov->id ? 'selected' : '' }}>{{$prov->name}}</option>
                                       @endforeach
                                     </select>
                                   </div>
                                 </div>
+                              </div>
+                              <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" name="status">
+                                  <option>Select one</option>
+                                  <option value="Active" {{ $service->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                  <option value="Not Active" {{ $service->status == 'Not Active' ? 'selected' : '' }}>Not Active</option>
+                                </select>
                               </div>
                               
                               

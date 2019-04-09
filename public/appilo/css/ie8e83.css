@@ -1,0 +1,13 @@
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {  
+	.app-features .single-app-features:hover i, 
+	.app-features .center .single-app-features i,
+	.app-features .owl-theme .owl-nav [class*=owl-] i,
+	.how-app-work-section .single-how-app-work .icon-box .inner i,
+	.how-app-work-section .download-btn i.fab,
+	.how-app-work-section .download-btn span.avail, .how-app-work-section .download-btn span.store-name,
+	.features-style-one .feature-style-content > i,
+	.pricing-section .single-pricing p.price,
+	.blog-style-one .single-blog-post .text-box a.read-more,
+	footer.footer .subscribe-section .subscribe-form button[type=submit] span,
+   .fun-fact .single-fun-fact span.counter {background: none !important;color: #d13497;}
+}

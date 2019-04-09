@@ -29,7 +29,7 @@
                                     <td>API URL</td>
                                     <td>{{ url('/api/sosmed') }}</td>
                                 </tr>
-                                @if($user)
+                                @if(isset($user))
                                 <tr>
                                     <td>API Key</td>
                                     <td>{{ $user->api_key }}</td>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="section-api-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-md">    
+                                        <table class="table table-striped table-md">    
                                       
                                                 <tr>
                                                     <th>
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="section-api-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-md">    
+                                        <table class="table table-striped table-md">    
                                       
                                                 <tr>
                                                     <th>
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="section-api-body">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-md">    
+                                        <table class="table table-striped table-md">    
                                       
                                                 <tr>
                                                     <th>

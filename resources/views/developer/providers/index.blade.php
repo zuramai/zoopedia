@@ -30,8 +30,9 @@
   		              <div class="card-body-header text-right">
   		                <a href="{{ url('developer/providers/add') }}" class="btn btn-primary">Tambah</a>
   		              </div>
+                    <div class="mb-3"></div>
                     <div class="table-responsive">
-                      <table class="table table-bordered table-md">
+                      <table class="table table-striped table-md">
                           <tr>
                             <th>#</th>
                             <th>Name</th>
@@ -53,7 +54,7 @@
                                 @method('delete')
                                 @csrf
                                 <input type="hidden" value="{{ $data->id }}" name="id">
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Jika menghapus provider, akan menghapus semua layanan dengan provider tersebut">Delete</button>
                               </form>
                             </td>
                           </tr>

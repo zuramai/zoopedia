@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
+use Auth;
+use App\Activity;
 class LoginController extends Controller
 {
     /*
@@ -35,5 +37,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $r) {
+        $activity = new Activity;
+        $activity->user_id = auth()->user()->id;
+        $activity->type = "Logout";
+        $activity->description = "Melakukan logout";
+        $activity->user_agent = $r->header('User-Agent');
+        $activity->ip = $r->ip();
+        $activity->save();
+
+        Auth::logout();
+        return redirect('/login');
     }
 }

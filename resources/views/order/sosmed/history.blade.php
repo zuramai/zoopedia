@@ -36,22 +36,19 @@
 		                            <i class="fa fa-exclamation-circle"></i> {{ $errors->first('quantity') }}
 		                        </div>
 						@endif
-						<div class="form">
-								<div class="row">
-								<div class="col-md-6 offset-md-6">
-										<form method="GET">
-											<div class="input-group mb-3">
-												<div class="input-group-prepend">
-												    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-												  </div>
-												<input type="text" placeholder="Cari target atau id pesanan" class="form-control" name="search">
-											</div>
-										</form>
-									</div>
-								</div>
-						</div>					
+						<div class="float-right">
+	                        <form>
+	                          <div class="input-group">
+	                            <input type="text" class="form-control" placeholder="Cari order id atau target" name="search">
+	                            <div class="input-group-append">                                            
+	                              <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+	                            </div>
+	                          </div>
+	                        </form>
+                      	</div>				
+                      	<div class="clearfix mb-3"></div>
 						<div class="table-responsive">
-							<table class="table table-bordered table-md">
+							<table class="table table-striped table-md">
 								<tr>
 									<th>ID</th>
 									<th>Service</th>
@@ -68,9 +65,9 @@
 										<td>{{ $data_order->id }}</td>
 										<td>{{ $data_order->service->name }}</td>
 										<td>{{ $data_order->target }}</td>
-										<td>{{ $data_order->quantity }}</td>
+										<td> {{ $data_order->quantity }}</td>
 										<td>{{ $data_order->start_count }}/{{$data_order->remains}}</td>
-										<td>{{ $data_order->price }}</td>
+										<td>Rp {{ number_format($data_order->price) }}</td>
 										<td><span class="badge badge-{{ ($data_order->status === 'Pending') ? 'warning' : (($data_order->status == 'Error' || $data_order->status == 'Partial') ? 'danger' : (($data_order->status == 'Processing') ? 'primary' : 'success')) }}">{{ $data_order->status }}</span></td>
 										<td>
 											<span class="badge badge-{{ ($data_order->refund==0) ? 'danger' : 'success'}}">

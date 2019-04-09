@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Invitation_code;
+use Alert;
 
 class RegisterController extends Controller
 {
@@ -49,12 +51,32 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator =  Validator::make($data, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'kode_undangan' => ['required','exists:invitation_codes,code']
         ]);
+
+        if($validator->fails()) {
+            return $validator;
+        }
+        $inv = Invitation_code::where('code',$data['kode_undangan'])->first();
+        if($inv->remains == 0) {
+            Alert::danger('Kode undangan sudah dipakai');
+            return redirect()->back();
+        }else{
+            $update = Invitation_code::find($inv->id);
+            $update->remains -= 1;
+            if($inv->remains == 1) {
+                $update->status = "Redeemed";
+            }
+            $update->save();
+
+            Alert::success('Sukses daftar!','Sukses');
+            return $validator;
+        }
     }
 
     /**
@@ -65,6 +87,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['first_name']." ".$data['last_name'],
             'email' => $data['email'],

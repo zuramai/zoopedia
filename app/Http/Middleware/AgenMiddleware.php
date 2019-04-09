@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class AgenMiddleware
 {
     /**
@@ -15,6 +15,9 @@ class AgenMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::user()->level == 'Agen'){
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

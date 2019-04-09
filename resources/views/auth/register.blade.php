@@ -1,11 +1,12 @@
 @extends('layouts.auth')
 
 @section('content')
+@section('app_title','Register - '.env('WEB_TITLE'))
 <div class="container mt-5">
         <div class="row">
           <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="login-brand">
-              <img src="assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle">
+              <img src="{{env('WEB_LOGO_URL')}}" alt="logo" width="100" class="shadow-light rounded-circle">
             </div>
 
             <div class="card card-primary">
@@ -61,7 +62,15 @@
                       <input id="password2" type="password" class="form-control" name="password_confirmation">
                     </div>
                   </div>
-
+                  <div class="form-group">
+                    <label for="email">Kode undangan</label>
+                    <input id="text" type="text" class="form-control {{ $errors->has('kode_undangan') ? ' is-invalid' : '' }}" name="kode_undangan">
+                     @if ($errors->has('kode_undangan'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('kode_undangan') }}</strong>
+                        </span>
+                    @endif
+                  </div>
 
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
@@ -69,6 +78,7 @@
                       <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
                     </div>
                   </div>
+
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order_pulsa extends Model
+class Staff extends Model
 {
-    //
+ 	protected $tablename = "staff";
 }
