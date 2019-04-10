@@ -78,7 +78,7 @@
                             {{$service->price}}
                           </td>
                           <td>
-                            {{$service->status}}
+                            <span class="badge badge-{{ ($service->status == 'Active' ? 'success' : 'danger') }}">{{$service->status}}</span>
                           </td>
                           <td>
                             {{$service->provider->name}}

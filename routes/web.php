@@ -133,7 +133,7 @@ Route::group(['prefix'=>'developer', 'middleware'=>['Developer'] ],function() {
 		Route::get('/add', 'AdminController@services_pulsa_add')->name('dev_services_add');
 		Route::post('/add', 'AdminController@post_add_services_pulsa')->name('dev_services_add_post');
 		Route::get('/edit/{id}', 'AdminController@edit_services_pulsa')->name('dev_services_edit');
-		Route::post('/edit/{id}', 'AdminController@update_services')->name('dev_services_update');
+		Route::post('/edit/{id}', 'AdminController@update_services_pulsa')->name('dev_services_update');
 	});
 	Route::prefix('/services_cat')->group(function(){
 		Route::get('/', 'AdminController@service_cat')->name('services_cat');

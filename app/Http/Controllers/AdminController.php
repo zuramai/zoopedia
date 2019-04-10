@@ -357,7 +357,7 @@ class AdminController extends Controller
         $category = Service_cat::where('type','PULSA')->get();
         $operator = Oprator::orderBy('name','ASC')->get();
         $provider = Provider::where('type','PULSA')->get();
-        return view('developer.services.pulsa.add', compact('provider','category','operator','service'));
+        return view('developer.services.pulsa.edit', compact('provider','category','operator','service'));
     }
     public function post_add_services_pulsa(Request $r) {
         $r->validate([
@@ -380,6 +380,30 @@ class AdminController extends Controller
         $pulsa->save();
 
         Alert::success('Sukses tambah layanan!','Sukses!');
+        return redirect('developer/services_pulsa');
+    }
+    public function update_services_pulsa(Request $r,$id) {
+        $r->validate([
+            'category' => 'required|exists:service_cats,id',
+            'oprator' => 'required|exists:services_pulsa_operators,id',
+            'name' => 'required|string',
+            'price' => 'required|integer',
+            'code' => 'required',
+            'provider' => 'required|exists:providers,id',
+            'status'=>'required|in:Active,Not Active'
+        ]);
+
+        $pulsa = Services_pulsa::find($id);
+        $pulsa->code = $r->code;
+        $pulsa->oprator_id = $r->oprator;
+        $pulsa->category_id = $r->category;
+        $pulsa->name = $r->name;
+        $pulsa->provider_id = $r->provider;
+        $pulsa->price = $r->price;
+        $pulsa->status = $r->status;
+        $pulsa->save();
+
+        Alert::success('Sukses ubah layanan!','Sukses!');
         return redirect('developer/services_pulsa');
     }
     public function manage_orders_pulsa(Request $r){
